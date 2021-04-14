@@ -1,0 +1,135 @@
+---
+title: "R Notebook for CHiP_Seq_bigwig_visualization"
+output: html_notebook
+---
+
+Hello, I am Dongyao major in veterinay medicine. This is my first experience of Visualization CHiP-Seq. I type full-scale annotation. Hope this could give you a step-by-step tutorial. Be brave and have fun with coding.
+
+```{r}
+#library the packages we need
+library("GEOquery")
+library('stringr')
+library("karyoploteR")
+library('TxDb.Mmusculus.UCSC.mm9.knownGene')
+library("dplyr")
+```
+```{r}
+#create the list we need to download using the GEOquery package
+BMAL1 <- stringr::str_c("GSM", 982688:982694)
+CLOCK <- stringr::str_c("GSM", 982711:982717)
+WG16 <- stringr::str_c("GSM", 982770:982776)
+SER59 <- stringr::str_c("GSM", 982777:982783)
+GSElist <- append(append(append(BMAL1, CLOCK), WG16), SER59)
+print(GSElist)
+print(length(GSElist))
+#GEOquery package offers a useful function "getGEOSuppFiles", GSE39977 is a large CHiP-Seq series, in this section,I try to focus on these four DNA-binding protein
+
+for (GSE in GSElist) {
+  GSE <- GEOquery::getGEOSuppFiles(GEO = GSE)
+}
+#If we not argue the location of GEO_supply_files function, it will automatically be downloaded in our Rproject folder. Every two supply files including .bed file and .bigwig file will be downloaded in a single fold named GSMXXXXXX.
+
+```
+```{r}
+#it is convenience for us to sort the .bigwig file and .bed file into two folders. related code is much easier in python with shulit and os, you could find the related py file in this GitHub repository. 
+```
+```{r}
+#we read the all .bigwig file name in order to pass them to other argument.
+names <- list.files(path = "D:/Rproject/CHiP-Seq/bw/")
+print(names)
+```
+```{r}
+#Find the gene region we need to zoon in, firstly we search the USP2 gene ID of mice in NCBI.
+mm9genes <-genes(TxDb.Mmusculus.UCSC.mm9.knownGene)
+gene_dataframe <- as.data.frame(mm9genes)
+usprange <- dplyr::filter(gene_dataframe, gene_dataframe$gene_id == "53376")
+print(usprange)
+```
+```{r}
+USP2.region <- toGRanges("chr9:43,875,512-43,903,710")
+kp <- plotKaryotype(genome = "mm9", zoom = USP2.region)
+genes.data <- makeGenesDataFromTxDb(TxDb.Mmusculus.UCSC.mm9.knownGene,
+                                    karyoplot=kp,
+                                    plot.transcripts = T, 
+                                    plot.transcripts.structure = T)
+
+genes.data <- addGeneNames(genes.data) #If you prefer to plot with no gene name, eliminate this command line
+genes.data <- mergeTranscripts(genes.data) #If you prefer to contain the transcripts structure, eliminate this line
+kp <- plotKaryotype(zoom = USP2.region, cex=1)
+kpPlotGenes(kp, data=genes.data, r0=1, r1=0.15, gene.name.cex = 2, add.gene.names = T)
+
+BMAL1.bw.files <- names[1:7]
+CLOCK.bw.files <- names[8:14]
+SER59.bw.files <- names[15:21]
+WG.bw.files <- names[22:28]
+
+
+pp <- getDefaultPlotParams(plot.type=1)
+pp$leftmargin <- 0.15
+pp$topmargin <- 15
+pp$bottommargin <- 15
+pp$ideogramheight <- 5
+pp$data1inmargin <- 10
+pp$data1outmargin <- 0
+genes.data <- makeGenesDataFromTxDb(TxDb.Mmusculus.UCSC.mm9.knownGene,
+                                    karyoplot=kp,
+                                    plot.transcripts = TRUE, 
+                                    plot.transcripts.structure = TRUE)
+genes.data <- addGeneNames(genes.data)
+genes.data <- mergeTranscripts(genes.data)
+
+
+kp <- plotKaryotype(zoom = USP2.region, cex=1, plot.params = pp)
+kpAddBaseNumbers(kp, tick.dist = 10000, minor.tick.dist = 5000,
+                 add.units = TRUE, cex=1, tick.len = 3)
+kpPlotGenes(kp, data=genes.data, r0=0, r1=0.2, gene.name.cex = 2.5, add.gene.names = F)
+
+groupmarks <- c("CT0", "CT4", "CT8", "CT12", "CT16", "CT20", "KO")
+
+
+total.tracks <- length(BMAL1.bw.files)+length(CLOCK.bw.files)
+#CLOCK
+out.at <- autotrack(1:length(groupmarks), total.tracks, margin = 0.3, r0=0.23)
+kpAddLabels(kp, labels = "CLOCK", r0 = out.at$r0, r1=out.at$r1,
+            cex=3.5, srt=90, pos=1, label.margin = 0.14)
+for(i in seq_len(length(CLOCK.bw.files))) {
+  at <- autotrack(i, length(groupmarks), r0=out.at$r0, r1=out.at$r1, margin = 0.1)
+  order=8 - i # Reverse order
+  kp <- kpPlotBigWig(kp, data=CLOCK.bw.files[order], ymax=35,
+                     r0=at$r0, r1=at$r1, col = "darkolivegreen1") # here is important: passing the file location of bigwig to data argument works in window. But import.bw is not work in windows.
+  computed.ymax <- ceiling(kp$latest.plot$computed.values$ymax)
+  kpAxis(kp, ymin=0, ymax=computed.ymax, tick.pos = computed.ymax, 
+         r0=at$r0, r1=at$r1, cex=1.6)
+  kpAddLabels(kp, labels = groupmarks[order], r0=at$r0, r1=at$r1, 
+              cex=2.2, label.margin = 0.035)
+}
+
+
+#BAML1
+
+out.at <- autotrack((length(groupmarks)+1):total.tracks, total.tracks, margin = 0.3, r0=0.23)
+
+kpAddLabels(kp, labels = "BMAL1", r0 = out.at$r0, r1=out.at$r1, cex=3.5,
+            srt=90, pos=1, label.margin = 0.14)
+
+for(i in seq_len(length(BMAL1.bw.files))) {
+  at <- autotrack(i, length(groupmarks), r0=out.at$r0, r1=out.at$r1, margin = 0.1)
+  order=8 - i
+  kp <- kpPlotBigWig(kp, data=BMAL1.bw.files[order], ymax=35,
+                     r0=at$r0, r1=at$r1, col = "cadetblue2")
+  computed.ymax <- ceiling(kp$latest.plot$computed.values$ymax)
+  kpAxis(kp, ymin=0, ymax=computed.ymax, tick.pos = computed.ymax, 
+         r0=at$r0, r1=at$r1, cex=1.6)
+  kpAddLabels(kp, labels = groupmarks[order], r0=at$r0, r1=at$r1, 
+              cex=2.2, label.margin = 0.035)
+  }
+
+# more detail please click the link https://bernatgel.github.io/karyoploter_tutorial/
+```
+
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
