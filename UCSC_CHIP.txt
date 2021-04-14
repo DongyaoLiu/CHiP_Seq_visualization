@@ -1,0 +1,46 @@
+track type=bigWig name="BMAL1_CT0" description="CT0" color=65,105,225 visibility=2 grp="BMAL1" bigDataUrl=https://de.cyverse.org/dl/d/D5BE94A3-2F48-4C32-A14D-3F0FA6224AB9/GSM982688
+track type=bigWig name="BMAL1_CT4" description="CT4" color=65,105,225 visibility=2 grp="BMAL1" bigDataUrl=https://de.cyverse.org/dl/d/3D94B8E3-A801-4A9D-80B5-1A0C801C5201/GSM982689
+track type=bigWig name="BMAL1_CT8" description="CT8" color=65,105,225 visibility=2 grp="BMAL1" bigDataUrl=https://de.cyverse.org/dl/d/758E063A-43A0-4BAC-9FAB-A80EB69988E3/GSM982690
+track type=bigWig name="BMAL1_CT12" description="CT12" color=65,105,225 visibility=2 grp="BMAL1" bigDataUrl=https://de.cyverse.org/dl/d/3DFE76A4-F79E-4AB4-B4B3-D9AE9F6B3B9F/GSM982691
+track type=bigWig name="BMAL1_CT16" description="CT16" color=65,105,225 visibility=2 grp="BMAL1" bigDataUrl=https://de.cyverse.org/dl/d/9505E236-4625-4F0F-9413-2ABCF79114AD/GSM982692
+track type=bigWig name="BMAL1_CT20" description="CT20" color=65,105,225 visibility=2 grp="BMAL1" bigDataUrl=https://de.cyverse.org/dl/d/61345915-A76C-4F7F-9314-DDB2D4B97F4C/GSM982693
+track type=bigWig name="BMAL1_KO" description="CT24" color=65,105,225 visibility=2 grp="BMAL1" bigDataUrl=https://de.cyverse.org/dl/d/C9CE132F-2FC7-48D2-8EF6-6E1B12B5E45F/GSM982694
+track type=bigWig name="CLOCK_CT0" description="CT0" color=61,145,64 visibility=2 grp="CLOCK" bigDataUrl=https://de.cyverse.org/dl/d/182B0182-F3A6-4919-892A-4E72BD7BB697/GSM982711
+track type=bigWig name="CLOCK_CT4" description="CT4" color=61,145,64 visibility=2 grp="CLOCK" bigDataUrl=https://de.cyverse.org/dl/d/F8CC2E17-D414-4AC1-A75E-DFFC4B1E61EC/GSM982712
+track type=bigWig name="CLOCK_CT8" description="CT8" color=61,145,64 visibility=2 grp="CLOCK" bigDataUrl=https://de.cyverse.org/dl/d/DC2CDC06-EA69-4256-9FCE-A60D51D42585/GSM982713
+track type=bigWig name="CLOCK_CT12" description="CT12" color=61,145,64 visibility=2 grp="CLOCK" bigDataUrl=https://de.cyverse.org/dl/d/3D722A7D-C2BD-421D-95AF-5E5CEB2A35E3/GSM982714
+track type=bigWig name="CLOCK_CT16" description="CT16" color=61,145,64 visibility=2 grp="CLOCK" bigDataUrl=https://de.cyverse.org/dl/d/4423935A-3FA3-44CB-A6CF-B97487B8427B/GSM982715
+track type=bigWig name="CLOCK_CT20" description="CT20" color=61,145,64 visibility=2 grp="CLOCK" bigDataUrl=https://de.cyverse.org/dl/d/B88B33D4-E725-4443-844A-C77DBA480A9F/GSM982716
+track type=bigWig name="CLOCK_KO" description="KO" color=61,145,64 visibility=2 grp="CLOCK" bigDataUrl=https://de.cyverse.org/dl/d/31A4CFA7-2452-42DD-A390-078D107FC6CE/GSM982717
+track type=bigWig name="RNAPII-8WG16_CT0" description="CT0" color=255,215,0 visibility=2 grp="CLOCK" bigDataUrl=https://de.cyverse.org/dl/d/69EA3695-7120-4532-979F-FCD42C485E6D/GSM982770
+track type=bigWig name="RNAPII-8WG16_CT4" description="CT4" color=255,215,0 visibility=2 grp="RNAPII-8WG16" bigDataUrl=https://de.cyverse.org/dl/d/61740FA9-4B09-4072-BDA4-B1E995B2D5F9/GSM982771
+track type=bigWig name="RNAPII-8WG16_CT8" description="CT8" color=255,215,0 visibility=2 grp="RNAPII-8WG16" bigDataUrl=https://de.cyverse.org/dl/d/2A9A1041-CCA6-4E16-9306-CF65DC245931/GSM982772
+track type=bigWig name="RNAPII-8WG16_CT12" description="CT12" color=255,215,0 visibility=2 grp="RNAPII-8WG16" bigDataUrl=https://de.cyverse.org/dl/d/CB78931A-6A09-4724-B34E-68FADB62AB28/GSM982773
+track type=bigWig name="RNAPII-8WG16_CT16" description="CT16" color=255,215,0 visibility=2 grp="RNAPII-8WG16" bigDataUrl=https://de.cyverse.org/dl/d/E0E79F83-BD77-4788-8C3C-12DE8B111A68/GSM982774
+track type=bigWig name="RNAPII-8WG16_CT20" description="CT20" color=255,215,0 visibility=2 grp="RNAPII-8WG16" bigDataUrl=https://de.cyverse.org/dl/d/4EDC0466-57E6-40E8-BB64-44CE9CDB0CDE/GSM982775
+track type=bigWig name="RNAPII-8WG16_average" description="average" color=255,215,0 visibility=2 grp="RNAPII-8WG16" bigDataUrl=https://de.cyverse.org/dl/d/C198781C-FE98-46C7-A9D4-FBBF1A44D024/GSM982776_R1n4Pol2_BC14.bw
+track type=bigWig name="RNAPII-Ser5P_CT0" description="CT0" color=210,105,30 visibility=2 grp="RNAPII-Ser5P" bigDataUrl=https://de.cyverse.org/dl/d/5288C208-48AD-4AC3-A602-9105FE8400C2/GSM982777
+track type=bigWig name="RNAPII-Ser5P_CT4" description="CT4" color=210,105,30 visibility=2 grp="RNAPII-Ser5P" bigDataUrl=https://de.cyverse.org/dl/d/79DF948D-3358-493D-A063-6507630ABF58/GSM982778
+track type=bigWig name="RNAPII-Ser5P_CT8" description="CT8" color=210,105,30 visibility=2 grp="RNAPII-Ser5P" bigDataUrl=https://de.cyverse.org/dl/d/38BF1D84-031B-4163-BAE5-0460751B4F12/GSM982779
+track type=bigWig name="RNAPII-Ser5P_CT12" description="CT12" color=210,105,30 visibility=2 grp="RNAPII-Ser5P" bigDataUrl=https://de.cyverse.org/dl/d/4D81B71C-0A28-4630-8E1B-3657524763E3/GSM982780
+track type=bigWig name="RNAPII-Ser5P_CT16" description="CT16" color=210,105,30 visibility=2 grp="RNAPII-Ser5P" bigDataUrl=https://de.cyverse.org/dl/d/DF436D30-720D-48D4-A454-6291BC89516A/GSM982781
+track type=bigWig name="RNAPII-Ser5P_CT20" description="CT20" color=210,105,30 visibility=2 grp="RNAPII-Ser5P" bigDataUrl=https://de.cyverse.org/dl/d/BC308102-146F-497E-AF9A-CC36EEC32AF2/GSM982782
+track type=bigWig name="RNAPII-Ser5P_average" description="average" color=210,105,30 visibility=2 grp="RNAPII-Ser5P" bigDataUrl=https://de.cyverse.org/dl/d/FDB391F8-CC02-4E37-9F76-1776398A4481/GSM982783_R20Ser5P_BC14.bw
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
