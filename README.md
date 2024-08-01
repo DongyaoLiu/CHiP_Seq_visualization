@@ -1,3 +1,9 @@
 # CHiP_Seq_visualization
 
-Hi! I am Dongyao. In this project you could find all you need to visualiz a track of ChiP-Seq. I use the R package and UCSC to achieve my aims. Hope this could help you to do some related work! Be brave and have fun with coding. 
+## Description
+In this repository you could find all you need to visualiz a track of ChiP-Seq by using R package. 
+I start this part of work when I was studing in NWAFU as an undergraduate student in 2020. Related code was pacakged in 2022.
+
+## Contract me
+liudongyao@nwafu.edu.cn
+dongyao@connect.hku.hk
